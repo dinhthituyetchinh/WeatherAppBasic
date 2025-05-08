@@ -17,19 +17,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
-
-            <!-- Search bar -->
-            <EditText
-                android:id="@+id/search_bar"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30sp"
-                android:background="@drawable/search_bar_background"
-                android:drawableStart="@android:drawable/ic_menu_search"
-                android:hint="Tìm kiếm thành phố khác"
-                android:padding="9dp" />
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Ô nhập thành phố -->
+                <EditText
+                    android:id="@+id/search_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_bar_background"
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:hint="Tìm kiếm thành phố khác"
+                    android:padding="8dp" />
+
+                <!-- Nút TÌM KIẾM -->
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TÌM"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
+
 
             <!-- Title City -->
             <TextView
@@ -225,6 +239,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rc_today"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"

@@ -1,9 +1,12 @@
 package com.example.weatherappbasic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,10 +33,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CurrentWeatherActivity extends AppCompatActivity {
 
     EditText editTextCity;
-    TextView tvCity, tvTemp, mainWeather, tvHumidity, tvWind, tvClouds, textViewTime;
+    TextView tvCity, tvTemp, mainWeather, tvHumidity, tvWind, tvClouds, textViewTime, tvNextDay;
     RecyclerView recyclerViewToday;
 
-
+    Button btnSearch;
     ImageView iconWeather;
     String cityName;
     @Override
@@ -50,42 +53,50 @@ public class CurrentWeatherActivity extends AppCompatActivity {
         textViewTime = findViewById(R.id.dt);
         iconWeather = findViewById(R.id.iconWeather);
 
+        btnSearch = findViewById(R.id.btn_search);
+        tvNextDay = findViewById(R.id.nextSevenDays);
+
         recyclerViewToday = findViewById(R.id.rc_today);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,  LinearLayoutManager.HORIZONTAL, false);
         recyclerViewToday.setLayoutManager(linearLayoutManager);
-//
+
         editTextCity = findViewById(R.id.search_bar);
         if (editTextCity != null) {
             cityName = editTextCity.getText().toString().trim();
             if (cityName.isEmpty()) {
                 cityName = "Ho Chi Minh";
             }
-            loadWeatherData();
-            loadHourlyForecast();
+            loadWeatherData(cityName);
+            loadHourlyForecast(cityName);
         } else {
             Log.e("WeatherApp", "EditText not found.");
         }
 
-        editTextCity.addTextChangedListener(new TextWatcher() {
+       btnSearch.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               cityName = editTextCity.getText().toString().trim();
+               if (cityName.isEmpty()) {
+                   cityName = "Ho Chi Minh";
+               }
+               loadWeatherData(cityName);
+               loadHourlyForecast(cityName);
+           }
+       });
+
+        tvNextDay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public void onClick(View v) {
+                cityName = editTextCity.getText().toString().trim();
+                Intent intent = new Intent(CurrentWeatherActivity.this, WeatherListActivity.class);
+                intent.putExtra("name", cityName);
+                startActivity(intent);
             }
         });
 
     }
 
-    protected void loadWeatherData() {
+    protected void loadWeatherData(String c) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org/data/2.5/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -95,8 +106,8 @@ public class CurrentWeatherActivity extends AppCompatActivity {
 
 
         Call<WeatherResponse> call = api.getCurrentWeather(
-                cityName,
-                "",
+                c,
+                "a69f4dc026cb67689f378785c11ae611",
                 "metric"
         );
 
@@ -156,7 +167,7 @@ public class CurrentWeatherActivity extends AppCompatActivity {
             }
         });
     }
-    private void loadHourlyForecast() {
+    private void loadHourlyForecast(String city) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org/data/2.5/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -165,8 +176,8 @@ public class CurrentWeatherActivity extends AppCompatActivity {
         WeatherApi api = retrofit.create(WeatherApi.class);
 
         Call<HourlyWeatherResponse> call = api.getHourlyForecast(
-                cityName,
-                "a69f4dc026cb67689f378785c11ae611",
+                city,
+                "",
                 "metric"
         );
 
@@ -175,6 +186,7 @@ public class CurrentWeatherActivity extends AppCompatActivity {
             public void onResponse(Call<HourlyWeatherResponse> call, Response<HourlyWeatherResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<HourlyWeather> hourlyList = response.body().getList();
+
                     HourlyWeatherAdapter adapter = new HourlyWeatherAdapter(CurrentWeatherActivity.this, hourlyList.subList(0, 12));
                     recyclerViewToday.setAdapter(adapter);
                 }

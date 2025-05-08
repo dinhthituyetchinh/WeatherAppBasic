@@ -18,34 +18,35 @@
             android:background="#F8F8F8"
             android:padding="16dp">
 
+            <TextView
+                android:id="@+id/arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="← Quay lại"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:textColor="@android:color/black"
+                android:layout_gravity="start"/>
+
             <!-- Title text -->
             <TextView
+                android:layout_below="@+id/arrow_back"
                 android:id="@+id/title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weather"
+                android:text="Các ngày tiếp theo"
                 android:textAllCaps="true"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true" />
 
-            <!-- Search bar -->
-            <EditText
-                android:id="@+id/search_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title_text"
-                android:layout_marginTop="16dp"
-                android:hint="Search"
-                android:drawableStart="@android:drawable/ic_menu_search"
-                android:padding="10dp"
-                android:background="@drawable/search_bar_background" />
 
-            <!--        <androidx.recyclerview.widget.RecyclerView-->
-            <!--            android:id="@+id/listPokemon_RecyclerView"-->
-            <!--            android:layout_below="@id/search_bar"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"/>-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@+id/title_text"
+                android:id="@+id/recycler_daily_weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
 
         </RelativeLayout>

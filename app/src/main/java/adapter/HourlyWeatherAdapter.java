@@ -3,8 +3,11 @@ package adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -54,6 +57,18 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
             super(binding.getRoot());
             this.binding = binding;
         }
+        public void bind(HourlyWeather weather) {
+            binding.setWeatherVm(new HourlyWeatherViewModel(weather));
+            binding.executePendingBindings();
+        }
+    }
+
+    @BindingAdapter("ImageUrl")
+    public static void loadImg(ImageView imageView, String url)
+    {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .into(imageView);
     }
 }
 

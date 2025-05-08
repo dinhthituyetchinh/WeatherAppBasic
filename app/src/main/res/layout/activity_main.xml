@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
+    <!-- Hình ảnh nền -->
     <ImageView
+        android:id="@+id/sunny_image"
+        android:layout_width="400px"
+        android:layout_height="400px"
+        android:src="@mipmap/sunny"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true" />
+
+    <!-- TextView hiển thị chữ "Dự báo thời tiết" -->
+    <TextView
+        android:id="@+id/textViewForecast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/sunny"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Dự báo thời tiết"
+        android:textSize="30sp"
+        android:textAllCaps="true"
+        android:textColor="#2196F3"
+        android:layout_below="@id/sunny_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

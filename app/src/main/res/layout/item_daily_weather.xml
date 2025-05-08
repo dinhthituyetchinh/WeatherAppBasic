@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hôm nay"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/image_icon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginVertical="8dp" />
+
+        <TextView
+            android:id="@+id/text_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18°C / 25°C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trời quang"
+            android:textColor="#555"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
