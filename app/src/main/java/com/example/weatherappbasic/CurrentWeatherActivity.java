@@ -88,6 +88,7 @@ public class CurrentWeatherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cityName = editTextCity.getText().toString().trim();
+           //     Log.d("CurrentWeather", "City entered: " + cityName);
                 Intent intent = new Intent(CurrentWeatherActivity.this, WeatherListActivity.class);
                 intent.putExtra("name", cityName);
                 startActivity(intent);
@@ -107,7 +108,7 @@ public class CurrentWeatherActivity extends AppCompatActivity {
 
         Call<WeatherResponse> call = api.getCurrentWeather(
                 c,
-                "a69f4dc026cb67689f378785c11ae611",
+                "",
                 "metric"
         );
 
@@ -177,7 +178,7 @@ public class CurrentWeatherActivity extends AppCompatActivity {
 
         Call<HourlyWeatherResponse> call = api.getHourlyForecast(
                 city,
-                "",
+                "a69f4dc026cb67689f378785c11ae611",
                 "metric"
         );
 

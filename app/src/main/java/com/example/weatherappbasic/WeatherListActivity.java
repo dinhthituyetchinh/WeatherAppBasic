@@ -35,11 +35,19 @@ public class WeatherListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_list);
+        Log.d("WeatherListActivity", "Activity được mở"); // Log này để kiểm tra trước
+
         Intent intent = getIntent();
-//        String city = intent.getStringExtra("name");
-        String city = "Ho Chi Minh";
-        Log.d("Result", "Dữ liệu truyền qua" +city);
-        get7DaysData(city);
+        String city = intent.getStringExtra("name");
+
+        if (city.isEmpty()) {
+            city = "Ho Chi Minh";
+            get7DaysData(city);
+        } else {
+            get7DaysData(city);
+            //Log.d("Result", "Dữ liệu truyền qua: " + city);
+        }
+
 
         TextView arrowBack = findViewById(R.id.arrow_back);
 

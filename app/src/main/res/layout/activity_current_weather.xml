@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WeatherListActivity">
@@ -29,19 +30,20 @@
                     android:id="@+id/search_bar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:background="@drawable/search_bar_background"
                     android:drawableStart="@android:drawable/ic_menu_search"
                     android:hint="Tìm kiếm thành phố khác"
-                    android:padding="8dp" />
+                    android:padding="5dp" />
 
                 <!-- Nút TÌM KIẾM -->
                 <Button
+                    android:backgroundTint="@color/purple_200"
                     android:id="@+id/btn_search"
-                    android:layout_width="wrap_content"
+                    android:layout_width="61dp"
                     android:layout_height="wrap_content"
-                    android:text="TÌM"
-                    android:layout_marginEnd="8dp" />
+                    android:layout_marginEnd="8dp"
+                    android:text="TÌM" />
             </LinearLayout>
 
 

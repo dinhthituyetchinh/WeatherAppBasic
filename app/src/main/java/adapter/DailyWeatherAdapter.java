@@ -44,7 +44,7 @@ public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapte
         holder.date.setText(formatDate(weather.date));
         holder.temp.setText(String.format("%.0f°C / %.0f°C", weather.minTemp, weather.maxTemp));
         holder.description.setText(translateDescription(weather.description));
-
+        // Xem được hình trên phiên bản Device cao hơn, trên phiên bản này hong coi được, tuy nhiên chuyển device thì bug
         String iconUrl = "https://openweathermap.org/img/wn/" + weather.icon + "@2x.png";
         Glide.with(context).load(iconUrl).into(holder.icon);
     }
