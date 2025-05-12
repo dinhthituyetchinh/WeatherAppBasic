@@ -38,7 +38,6 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(hourlyList.get(position));
-        Log.d("Adapter", "Temp raw: " + hourlyList.get(position).getTemp());
 
 
 //        Glide.with(context)

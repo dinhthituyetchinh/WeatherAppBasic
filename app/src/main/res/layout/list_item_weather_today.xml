@@ -39,7 +39,7 @@
                android:layout_height="45dp"
                android:layout_gravity="center"
                android:layout_margin="8dp"
-               android:src="@{weather_vm.iconUrl}"
+               app:ImageUrl="@{weather_vm.iconUrl}"
                app:srcCompat="@drawable/warning" />
 
            <TextView
