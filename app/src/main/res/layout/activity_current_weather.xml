@@ -28,19 +28,20 @@
                 <!-- Ô nhập thành phố -->
                 <EditText
                     android:id="@+id/search_bar"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_width="298dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/search_bar_background"
                     android:drawableStart="@android:drawable/ic_menu_search"
                     android:hint="Tìm kiếm thành phố khác"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
 
                 <!-- Nút TÌM KIẾM -->
                 <Button
                     android:backgroundTint="@color/purple_200"
                     android:id="@+id/btn_search"
-                    android:layout_width="61dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="TÌM" />
@@ -54,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="City"
+                android:textColor="@color/black"
                 android:textAllCaps="true"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -79,6 +81,7 @@
 <!--            Thời gian: ngày tháng | Múi giờ -->
             <TextView
                 android:id="@+id/dt"
+                android:textColor="@color/purple_200"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

@@ -8,7 +8,7 @@
     app:cardCornerRadius="8dp">
 
     <LinearLayout
-        android:background="@drawable/white_hour_background"
+        android:background="@drawable/gradient_background_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

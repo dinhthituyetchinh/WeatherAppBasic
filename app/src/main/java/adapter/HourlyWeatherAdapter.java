@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -36,13 +37,13 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        HourlyWeather hw = hourlyList.get(position);
-        HourlyWeatherViewModel viewModel = new HourlyWeatherViewModel(hw);
-        holder.binding.setWeatherVm(viewModel);
+        holder.bind(hourlyList.get(position));
+        Log.d("Adapter", "Temp raw: " + hourlyList.get(position).getTemp());
 
-        Glide.with(context)
-                .load(viewModel.getIconUrl())
-                .into(holder.binding.imageWeatherToday);
+
+//        Glide.with(context)
+//                .load(viewModel.getIconUrl())
+//                .into(holder.binding.imageWeatherToday);
     }
 
     @Override

@@ -108,7 +108,7 @@ public class CurrentWeatherActivity extends AppCompatActivity {
 
         Call<WeatherResponse> call = api.getCurrentWeather(
                 c,
-                "",
+                "a69f4dc026cb67689f378785c11ae611",
                 "metric"
         );
 
